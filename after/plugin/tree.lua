@@ -15,11 +15,11 @@ nvim_tree.setup({
 })
 
 -- keymap
-vim.keymap.set("n", "<Leader>t", "<cmd>NvimTreeToggle<CR>")
-vim.keymap.set("n", "<Leader>T", "<cmd>NvimTreeFindFileToggle<CR>")
+vim.keymap.set("n", "<Leader>T", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Leader>t", "<cmd>NvimTreeFindFileToggle<CR>")
 
 -- open the tree
-local function open_nvim_tree()
-  require("nvim-tree.api").tree.open()
-end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- local function open_nvim_tree()
+--   require("nvim-tree.api").tree.open()
+-- end
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
