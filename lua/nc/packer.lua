@@ -11,22 +11,15 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end
-  }
+
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
+
   use 'vim-airline/vim-airline'
   use 'doums/darcula'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('mbbill/undotree')
+  use 'mbbill/undotree' 
   use 'tpope/vim-commentary'
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-  end}
+  use 'akinsho/toggleterm.nvim'
   use 'lewis6991/gitsigns.nvim'
 end)
