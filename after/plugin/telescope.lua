@@ -6,3 +6,22 @@ vim.keymap.set('n', '<leader>fs', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
+local action_layout = require("telescope.actions.layout")
+local actions = require("telescope.actions")
+require("telescope").setup{
+  defaults = {
+    mappings = {
+      n = {
+        -- ["<C-m>"] = action_layout.toggle_preview
+      },
+      i = {
+        ["<M-p>"] = action_layout.toggle_preview,
+        -- ["<C-n>"] = actions.cycle_previewers_next,
+        -- ["<C-a>"] = actions.cycle_previewers_prev,
+        ["<esc>"] = actions.close,
+      },
+    },
+  }
+}
+
+vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
