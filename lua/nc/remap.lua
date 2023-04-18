@@ -3,6 +3,9 @@ vim.keymap.set("i", "kj", "<ESC>")
 
 -- Paste
 vim.keymap.set("v", "p", '"_dP')
+vim.keymap.set("n", "J", 'mzJ`z')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- Move text up and down
 vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")

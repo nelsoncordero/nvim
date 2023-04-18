@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'nvim-lua/plenary.nvim'
+  use 'sheerun/vim-polyglot'
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.1' }
 
   use 'nvim-tree/nvim-web-devicons'
