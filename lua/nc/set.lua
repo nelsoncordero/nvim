@@ -8,8 +8,7 @@ local options = {
   mouse = "a",                             -- allow the mouse to be used in neovim
   cursorline = true,                       -- highlight the current line
   termguicolors = true,                    -- set term gui colors (most terminals support this)
-  colorcolumn = "121",
-  
+  colorcolumn = "120",
   -- backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   -- cmdheight = 2,                           -- more space in the neovim command line for displaying messages
