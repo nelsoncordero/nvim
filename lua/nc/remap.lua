@@ -23,6 +23,8 @@ vim.keymap.set("i", "<Leader>v", vim.cmd.vsplit)
 
 -- Window
 vim.keymap.set("n", "<Leader>w", "<C-w>")
+vim.keymap.set("n", "<Leader>l", "<C-w>l")
+vim.keymap.set("n", "<Leader>h", "<C-w>h")
 
 -- Resize window
 vim.keymap.set("i", "<A-l>", "<C-w>5>")
