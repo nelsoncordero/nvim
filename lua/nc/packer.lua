@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use { 'christoomey/vim-tmux-navigator', lazy = false }
+
   use 'nvim-lua/plenary.nvim'
   use 'sheerun/vim-polyglot'
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.1' }
