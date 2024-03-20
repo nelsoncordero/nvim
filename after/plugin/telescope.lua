@@ -14,12 +14,18 @@ require("telescope").setup{
     mappings = {
       n = {
         -- ["<C-m>"] = action_layout.toggle_preview
+        ["q"] = actions.close,
+        ["<C-J>"] = actions.preview_scrolling_down,
+        ["<C-K>"] = actions.preview_scrolling_up,
       },
       i = {
         ["<M-p>"] = action_layout.toggle_preview,
         -- ["<C-n>"] = actions.cycle_previewers_next,
         -- ["<C-a>"] = actions.cycle_previewers_prev,
         ["<esc>"] = actions.close,
+        ["<C-u>"] = false,
+        ["<C-J>"] = actions.preview_scrolling_down,
+        ["<C-K>"] = actions.preview_scrolling_up,
       },
     },
   }
