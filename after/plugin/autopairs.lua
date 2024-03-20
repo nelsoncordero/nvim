@@ -22,3 +22,12 @@ npairs.setup({
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+local Rule = require('nvim-autopairs.rule')
+local cond = require('nvim-autopairs.conds')
+
+npairs.add_rules({
+  Rule("%", "%")
+    :with_pair(cond.before_text("{"))
+  }
+)
