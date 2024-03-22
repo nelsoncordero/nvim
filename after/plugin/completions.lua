@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 require('luasnip.loaders.from_vscode').lazy_load()
+require'luasnip'.filetype_extend("htmldjango", {"html"})
 
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
