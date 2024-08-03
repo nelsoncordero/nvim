@@ -70,6 +70,11 @@ end
 
 nvim_tree.setup({
   on_attach = on_attach,
+  filters = {
+    custom = {
+     "^\\.git",
+    },
+  },
 })
 
 -- keymap
