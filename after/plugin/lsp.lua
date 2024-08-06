@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local constants = require('nc.constants')
 
 lsp.preset("recommended")
 
@@ -23,8 +24,12 @@ require'lspconfig'.pylsp.setup{
     pylsp = {
       plugins = {
         pycodestyle = {
-          maxLineLength = 99
-        }
+          maxLineLength = constants.PY_MAXLENGHT
+        },
+        flake8 = {
+          enabled = true,
+          maxLineLength = constants.PY_MAXLENGHT
+        },
       }
     }
   }
