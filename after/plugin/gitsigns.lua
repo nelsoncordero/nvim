@@ -3,14 +3,11 @@ if not status_ok then
   return
 end
 
-vim.api.nvim_set_hl(0, 'GitSignsAdd', { bg = '#294436' })
-vim.api.nvim_set_hl(0, 'GitSignsChange', { bg = '#303c47' })
-
 gitsigns.setup {
   signs = {
     add          = { text = "▎" },
     change       = { text = "▎" },
-    delete       = { text = '_' },
+    delete       = { text = "契" },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
@@ -18,7 +15,7 @@ gitsigns.setup {
   signs_staged = {
     add          = { text = "▎" },
     change       = { text = "▎" },
-    delete       = { text = '_' },
+    delete       = { text = "契" },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
