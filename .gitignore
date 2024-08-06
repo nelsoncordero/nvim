@@ -1,2 +1,2 @@
 plugin/packer_compiled.lua
-lua/nc/custom.lua
+after/plugin/custom.lua
