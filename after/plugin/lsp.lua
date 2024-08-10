@@ -23,14 +23,15 @@ require'lspconfig'.pylsp.setup{
   settings = {
     pylsp = {
       plugins = {
-        pycodestyle = {
-          maxLineLength = constants.PY_MAXLENGHT
-        },
+        pycodestyle = { enabled = false },
+        mccabe = { enabled = false },
+        pyflakes = { enabled = false },
         flake8 = {
           enabled = true,
           maxLineLength = constants.PY_MAXLENGHT
         },
-      }
+      },
+      configurationSources = { 'flake8' },
     }
   }
 }
