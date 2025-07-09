@@ -80,3 +80,46 @@ vim.keymap.set('n', '<leader>fG', function() my_git_bcommits(); end)
 
 
 vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
+
+local previewers = require('telescope.previewers')
+
+-- local delta = previewers.new_termopen_previewer {
+--   get_command = function(entry)
+--     -- note we can't use pipes
+--     -- this command is for git_commits and git_bcommits
+--     return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value .. '^!' }
+
+--     -- this is for status
+--     -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
+--     -- just do an if and return a different command
+--     -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+--   end
+-- }
+
+
+-- local my_git_bcommits = function(opts)
+--   opts = opts or {}
+--   opts.previewer = delta
+
+--   builtin.git_bcommits(opts)
+-- end
+
+local delta = previewers.new_termopen_previewer {
+  get_command = function(entry)
+    -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value .. '^!', '--', entry.current_file }
+    return { "git", "-c", "core.pager=delta", "-c", "delta.line-numbers=true", "-c", "delta.pager=less -R", "show", entry.value, '--', entry.current_file }
+  end
+}
+
+local my_git_bcommits = function(opts)
+  opts = opts or {}
+  opts.previewer = {
+    delta,
+    previewers.git_commit_message.new(opts),
+    previewers.git_commit_diff_as_was.new(opts),
+  }
+
+  builtin.git_bcommits(opts)
+end
+
+vim.keymap.set('n', '<leader>fG', function() my_git_bcommits(); end)
