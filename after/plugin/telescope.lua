@@ -47,6 +47,9 @@ telescope.load_extension("live_grep_args")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fh', function()
+	builtin.find_files({ hidden = true, no_ignore = true });
+end)
 vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fW', builtin.grep_string, {})
