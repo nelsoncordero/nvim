@@ -27,6 +27,9 @@ telescope.setup{
         ["<C-d>"] = actions.delete_buffer,
       },
     },
+    layout_config = {
+      scroll_speed = 1,
+    },
   },
   extensions = {
     live_grep_args = {
