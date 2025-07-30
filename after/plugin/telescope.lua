@@ -2,6 +2,8 @@ local telescope = require("telescope")
 local lga_actions = require("telescope-live-grep-args.actions")
 local action_layout = require("telescope.actions.layout")
 local actions = require("telescope.actions")
+local builtin = require('telescope.builtin')
+local previewers = require('telescope.previewers')
 
 telescope.setup{
   pickers = {
@@ -45,7 +47,23 @@ telescope.setup{
 }
 telescope.load_extension("live_grep_args")
 
-local builtin = require('telescope.builtin')
+local delta = previewers.new_termopen_previewer {
+  get_command = function(entry)
+    return { "git", "-c", "core.pager=delta", "-c", "delta.line-numbers=true", "-c", "delta.pager=less -R", "show", entry.value, '--', entry.current_file }
+  end
+}
+
+local my_git_bcommits = function(opts)
+  opts = opts or {}
+  opts.previewer = {
+    delta,
+    previewers.git_commit_message.new(opts),
+    previewers.git_commit_diff_as_was.new(opts),
+  }
+
+  builtin.git_bcommits(opts)
+end
+
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fh', function()
 	builtin.find_files({ hidden = true, no_ignore = true });
@@ -58,6 +76,7 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fs', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
+vim.keymap.set('n', '<leader>fG', function() my_git_bcommits(); end)
 
 
 vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
