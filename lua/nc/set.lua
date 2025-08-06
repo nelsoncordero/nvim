@@ -36,7 +36,7 @@ local options = {
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
   incsearch = true,
-  -- noh = true,
+  noh = true,
 }
 
 vim.opt.shortmess:append "c"
