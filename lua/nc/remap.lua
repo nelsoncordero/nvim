@@ -1,5 +1,6 @@
 vim.g.mapleader = ";"
 vim.keymap.set("i", "kj", "<ESC>")
+vim.keymap.set("i", "KJ", "<ESC>")
 
 -- Paste
 vim.keymap.set("v", "p", '"_dP')
@@ -32,4 +33,8 @@ vim.keymap.set("i", "<A-l>", "<C-w>5>")
 vim.keymap.set("i", "<A-h>", "<C-w>5<")
 vim.keymap.set("n", "<A-l>", "<C-w>5>")
 vim.keymap.set("n", "<A-h>", "<C-w>5<")
+vim.keymap.set("i", "<A-j>", "<C-w>2+")
+vim.keymap.set("i", "<A-k>", "<C-w>2-")
+vim.keymap.set("n", "<A-j>", "<C-w>2+")
+vim.keymap.set("n", "<A-k>", "<C-w>2-")
 
