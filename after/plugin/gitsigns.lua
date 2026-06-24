@@ -5,22 +5,22 @@ end
 
 gitsigns.setup {
   signs = {
-    add          = { text = "▎" },
-    change       = { text = "▎" },
-    delete       = { text = "契" },
+    add          = { text = '┃' },
+    change       = { text = '┃' },
+    delete       = { text = '_' },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
   },
   signs_staged = {
-    add          = { text = "▎" },
-    change       = { text = "▎" },
-    delete       = { text = "契" },
+    add          = { text = '┃' },
+    change       = { text = '┃' },
+    delete       = { text = '_' },
     topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
   },
-  signs_staged_enable = false,
+  signs_staged_enable = true,
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -30,7 +30,7 @@ gitsigns.setup {
     follow_files = true,
   },
   auto_attach = true,
-  attach_to_untracked = true,
+  attach_to_untracked = false,
   current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
@@ -38,8 +38,10 @@ gitsigns.setup {
     delay = 1000,
     ignore_whitespace = false,
     virt_text_priority = 100,
+    use_focus = true,
   },
   current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+  blame_formatter = nil,
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
@@ -83,11 +85,18 @@ gitsigns.setup {
     map('n', '<leader>hu', gs.undo_stage_hunk)
     map('n', '<leader>hR', gs.reset_buffer)
     map('n', '<leader>hp', gs.preview_hunk)
+    map('n', '<leader>hi', gitsigns.preview_hunk_inline)
     map('n', '<leader>hb', function() gs.blame_line{full=true} end)
     -- map('n', '<leader>tb', gs.toggle_current_line_blame)
     map('n', '<leader>hd', gs.diffthis)
     map('n', '<leader>hD', function() gs.diffthis('~') end)
     -- map('n', '<leader>td', gs.toggle_deleted)
+    map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
+    map('n', '<leader>hq', gitsigns.setqflist)
+
+    map('n', '<leader>hl', gitsigns.toggle_linehl)
+    map('n', '<leader>hd', gitsigns.toggle_deleted)
+    map('n', '<leader>hw', gitsigns.toggle_word_diff)
 
     -- Text object
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
