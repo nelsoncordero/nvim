@@ -36,7 +36,6 @@ local options = {
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
   incsearch = true,
-  noh = true,
 }
 
 vim.opt.shortmess:append "c"
@@ -50,3 +49,7 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 vim.cmd "set nohlsearch"
 
+vim.keymap.set("n", "<leader>l", function()
+    if vim.v.hlsearch == 1 then vim.cmd("nohlsearch")
+    else vim.cmd("set hlsearch") end
+end, { silent = true, desc = "Toggle search highlight" })
