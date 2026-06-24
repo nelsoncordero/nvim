@@ -1,7 +1,4 @@
 local plugins = {
-  -- Packer can manage itself
-  -- 'wbthomason/packer.nvim',
-
   { 'christoomey/vim-tmux-navigator', lazy = false },
 
   'nvim-lua/plenary.nvim',
@@ -20,37 +17,46 @@ local plugins = {
   'akinsho/toggleterm.nvim',
   'lewis6991/gitsigns.nvim',
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
     dependencies = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
-      'williamboman/mason.nvim',
-      run = function()
-        pcall(vim.cmd, 'MasonUpdate')
-      end,
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
     },
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
---
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-cmdline'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
-    {'saadparwaiz1/cmp_luasnip'},     -- Required
-    {'rafamadriz/friendly-snippets'},     -- Required
-  }
-},
-{
+  },
+
+  {
+    'hrsh7th/cmp-nvim-lsp',
+    event = {"BufReadPre", "BufNewFile"},
+    config = function()
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+      vim.lsp.config("*", { capabilities = capabilities })
+    end,
+  },
+
+  -- 'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+
+  -- For vsnip users.
+  --'hrsh7th/cmp-vsnip',
+  --'hrsh7th/vim-vsnip',
+
+  -- For luasnip users.
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+  'rafamadriz/friendly-snippets',     -- Required
+
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
-},
+  },
 }
 
 return plugins
