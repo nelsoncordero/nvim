@@ -64,9 +64,15 @@ local my_git_bcommits = function(opts)
   builtin.git_bcommits(opts)
 end
 
+local ignored_dirs = {
+  '%.git/',
+  '%.idea/',
+  'node_modules/',
+}
+
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fh', function()
-	builtin.find_files({ hidden = true, no_ignore = true });
+	builtin.find_files({ hidden = true, no_ignore = true, file_ignore_patterns = ignored_dirs });
 end)
 vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
