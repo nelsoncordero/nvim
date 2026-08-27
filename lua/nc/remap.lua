@@ -20,6 +20,8 @@ vim.keymap.set('n', '<leader>s', function()
 
   vim.api.nvim_set_current_win(current_win)
 end, { desc = "Scrollbind all windows without losing focus" })
+vim.keymap.set('n', 'j', function() return vim.wo.scrollbind and '<C-e>' or 'j' end, { expr = true, replace_keycodes = true })
+vim.keymap.set('n', 'k', function() return vim.wo.scrollbind and '<C-y>' or 'k' end, { expr = true, replace_keycodes = true })
 
 -- Paste
 vim.keymap.set("v", "p", '"_dP')
