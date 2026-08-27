@@ -5,6 +5,22 @@ vim.keymap.set("i", "KJ", "<ESC>")
 -- Remove
 vim.keymap.set("n", "<Leader>d", "dd")
 
+-- Sync scroll
+vim.keymap.set('n', '<leader>s', function()
+  local current_win = vim.api.nvim_get_current_win()
+  local is_bound = vim.wo.scrollbind
+
+  if is_bound then
+    vim.cmd('windo set noscb')
+    print("Scroll-binding DISABLED!")
+  else
+    vim.cmd('windo set scb')
+    print("Scroll-binding ENABLED!")
+  end
+
+  vim.api.nvim_set_current_win(current_win)
+end, { desc = "Scrollbind all windows without losing focus" })
+
 -- Paste
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "J", 'mzJ`z')
