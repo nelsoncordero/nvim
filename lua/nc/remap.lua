@@ -2,6 +2,9 @@ vim.g.mapleader = ";"
 vim.keymap.set("i", "kj", "<ESC>")
 vim.keymap.set("i", "KJ", "<ESC>")
 
+-- Remove
+vim.keymap.set("n", "<Leader>d", "dd")
+
 -- Paste
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "J", 'mzJ`z')
