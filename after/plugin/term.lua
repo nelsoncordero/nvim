@@ -80,7 +80,7 @@ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {nor
 function _lazydocker_toggle()
   lazydocker:toggle()
 end
-vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>lua _lazydocker_toggle()<CR>", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>lua _lazydocker_toggle()<CR>", {noremap = true, silent = true})
 
 local standar = Terminal:new({
   -- cmd = "lazygit",
