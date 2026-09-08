@@ -60,3 +60,8 @@ vim.keymap.set("i", "<A-k>", "<C-w>2-")
 vim.keymap.set("n", "<A-j>", "<C-w>2+")
 vim.keymap.set("n", "<A-k>", "<C-w>2-")
 
+vim.keymap.set("n", "<leader>/", function()
+    if vim.v.hlsearch == 1 then vim.cmd("nohlsearch")
+    else vim.cmd("set hlsearch") end
+end, { silent = true, desc = "Toggle search highlight" })
+
