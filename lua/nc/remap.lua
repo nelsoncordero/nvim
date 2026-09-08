@@ -65,3 +65,18 @@ vim.keymap.set("n", "<leader>/", function()
     else vim.cmd("set hlsearch") end
 end, { silent = true, desc = "Toggle search highlight" })
 
+function ReloadConfig()
+  -- Replace 'your_username' with the actual name of your lua sub-folder
+  for name, _ in pairs(package.loaded) do
+    if name:match('^nc') then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
+  vim.notify('Configuration reloaded!', vim.log.levels.INFO)
+end
+
+-- Map it to a key sequence (e.g., <leader>r)
+vim.keymap.set('n', '<leader>R', ReloadConfig, { desc = 'Reload Neovim Config' })
+
