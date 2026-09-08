@@ -1,6 +1,7 @@
 vim.g.mapleader = ";"
 vim.keymap.set("i", "kj", "<ESC>")
 vim.keymap.set("i", "KJ", "<ESC>")
+vim.keymap.set("n", "<Leader>w", ":w<CR>")
 
 -- Remove
 vim.keymap.set("n", "<Leader>d", "dd")
