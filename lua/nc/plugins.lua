@@ -57,6 +57,16 @@ local plugins = {
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    }
+  }
 }
 
 return plugins
