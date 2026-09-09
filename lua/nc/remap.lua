@@ -51,8 +51,8 @@ vim.keymap.set("n", "<Leader>x", "<C-w>x")
 -- Resize window
 vim.keymap.set("n", "<A-l>", "<C-w>5>")
 vim.keymap.set("n", "<A-h>", "<C-w>5<")
-vim.keymap.set("n", "<A-j>", "<C-w>2+")
-vim.keymap.set("n", "<A-k>", "<C-w>2-")
+-- vim.keymap.set("n", "<A-j>", "<C-w>2+")
+-- vim.keymap.set("n", "<A-k>", "<C-w>2-")
 
 vim.keymap.set("n", "<leader>/", function()
     if vim.v.hlsearch == 1 then vim.cmd("nohlsearch")
