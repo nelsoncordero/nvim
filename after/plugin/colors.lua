@@ -26,7 +26,7 @@ vim.api.nvim_call_function("darcula#Hi", {"Terminal", p.stdOutput, px.bg})
 -- Flash, "FlashMatch" and "FlashLabel"
 vim.api.nvim_set_hl(0, "FlashLabel", { fg = '#ff0000', bg = px.bg[0] })
 vim.api.nvim_set_hl(0, "FlashCurrent", { link = 'Search' })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#323232" })
+-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#323232" })
 
 -- New Hi
 vim.api.nvim_call_function("darcula#Hi", {"KeywordParameter", px.keywordParam, px.bg})
